@@ -8,7 +8,7 @@
 
 //////////////////////////////////////////
 
-var counter = 0;
+var counter = 1;
 
 var start = 0;
 
@@ -32,6 +32,8 @@ var generateFortuneCookie = function(fortunes) {
 		
 		var fortunePrev = document.getElementById('previous-fortunes-container');
 		
+		var forList = document.createElement('li');
+		
 		if(start >= 1){
 			for(var i = 0; i <= fortunePrev.length; i++){
 				if(fortunePrev[i] === fortuneCurrent){
@@ -40,10 +42,11 @@ var generateFortuneCookie = function(fortunes) {
 				}else{
 					document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
 					counter += 1;  // pass number of fortunes produced
+					forList.innerHTML = fortuneCurrent;
+					fortunePrev.appendChild(forList);
 				};
 			}
 		}else{
-			var forList = document.createElement('li');
 			forList.innerHTML = fortuneCurrent;
 			fortunePrev.appendChild(forList);
 			start += 1;
