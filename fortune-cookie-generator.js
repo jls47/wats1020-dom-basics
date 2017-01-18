@@ -25,6 +25,7 @@ var generateFortuneCookie = function(fortunesList) {
     // `fortune-cookie-text` to be able to insert text into that element.
 
 	var fortuneNum = Math.floor((Math.random() * fortunesList.length) + 0);
+	var fortuneActual = fortunesList[fortuneNum];
 	var fortuneText = document.getElementById('fortune-cookie-text');
 
     // TODO: Update the Previous Fortunes list with the current `innerHTML`
@@ -39,7 +40,7 @@ var generateFortuneCookie = function(fortunesList) {
         // 2. Set the `innerHTML` of that element equal to the `innerHTML` of
         //    the `#fortune-cookie-text` element.
 	
-	document.getElementById("fortuneList").innerHTML = fortuneText;
+	document.getElementById("fortuneLi").innerHTML = fortuneActual;
 	
         // 3. Select the `#previous-fortunes-container` container and use
         //    `appendChild()` to append the new `li` element you created above.
@@ -47,7 +48,7 @@ var generateFortuneCookie = function(fortunesList) {
 	document.getElementById("previous-fortunes-container").innerHTML.appendChild("fortuneLi");
 		
         // 4. You should see the previous fortune cookie saying show up in the list.
-
+	
 	
 
 
