@@ -35,7 +35,7 @@ var generateFortuneCookie = function(fortunes) {
 		if(start >= 1){
 			for(var i = 0; i <= fortunePrev.length; i++){
 				if(fortunePrev[i] === fortuneCurrent){
-					console.log(Repeat.  Returning to top.)
+					console.log("Repeat.  Returning to top.");
 					break;
 				}else{
 					document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
