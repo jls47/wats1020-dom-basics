@@ -47,6 +47,7 @@ var generateFortuneCookie = function(fortunes) {
 				};
 			}
 		}else{
+			document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
 			forList.innerHTML = fortuneCurrent;
 			fortunePrev.appendChild(forList);
 			start += 1;
