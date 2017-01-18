@@ -39,12 +39,13 @@ var generateFortuneCookie = function() {
         // 2. Set the `innerHTML` of that element equal to the `innerHTML` of
         //    the `#fortune-cookie-text` element.
 	
-	forList.innerHTML.append(document.getElementById('fortune-cookie-text').innerHTML);
+	forList.innerHTML = fortuneCurrent.innerHTML;
 	
         // 3. Select the `#previous-fortunes-container` container and use
         //    `appendChild()` to append the new `li` element you created above.
 	
-	document.getElementById("previous-fortunes-container").innerHTML.appendChild("forList");
+	var forPrev = document.getElementById("previous-fortunes-container");
+	forPrev.appendChild(forList);
 		
         // 4. You should see the previous fortune cookie saying show up in the list.
 	
