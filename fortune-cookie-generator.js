@@ -34,9 +34,9 @@ var generateFortuneCookie = function() {
     // value of `#fortune-cookie-text`. Follow these steps:
 
 	
-	var forList = document.createElement("li");
-	forList.innerHTML = fortuneCurrent.innerHTML;
-	var forPrev = document.getElementById("previous-fortunes-container");
+	var forList = document.createElement('li');
+	forList.innerHTML = fortuneCurrent;
+	var forPrev = document.getElementById('previous-fortunes-container');
 	forPrev.appendChild(forList);
 	
 	
