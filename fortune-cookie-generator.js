@@ -8,7 +8,7 @@
 
 //////////////////////////////////////////
 
-
+var counter = 0;
 
 var generateFortuneCookie = function() {
 
@@ -24,21 +24,28 @@ var generateFortuneCookie = function() {
 
     // `fortune-cookie-text` to be able to insert text into that element.
 
-	var fortuneNum = Math.floor(Math.random() * fortunesList.length);
-	var fortuneCurrent = fortunesList[fortuneNum];
-	document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
+		var fortuneNum = Math.floor(Math.random() * fortunesList.length);
+		
+		var fortuneCurrent = fortunesList[fortuneNum];
+		
+		document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
+		
+		counter += 1;  // pass number of fortunes produced
+		
+		var forList = document.createElement('li');
+		
+		forList.innerHTML = fortuneCurrent;
+		
+		var forPrev = document.getElementById('previous-fortunes-container');
+		
+		forPrev.appendChild(forList);
+		
+		fortunesList.splice(fortuneCurrent, 1);
 	
-
-    // TODO: Update the Previous Fortunes list with the current `innerHTML`
+	
+	// TODO: Update the Previous Fortunes list with the current `innerHTML`
 
     // value of `#fortune-cookie-text`. Follow these steps:
-
-	
-	var forList = document.createElement('li');
-	forList.innerHTML = fortuneCurrent;
-	var forPrev = document.getElementById('previous-fortunes-container');
-	forPrev.appendChild(forList);
-	
 	
         // 1. Create a new `li` element with the `document.createElement()` method.
         // 2. Set the `innerHTML` of that element equal to the `innerHTML` of
@@ -48,7 +55,6 @@ var generateFortuneCookie = function() {
         // 4. You should see the previous fortune cookie saying show up in the list.
 	
 	
-
 
     // TODO: Select a new (random) fortune cookie saying from the data stored in the
 
