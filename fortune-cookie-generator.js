@@ -39,8 +39,6 @@ var generateFortuneCookie = function(arrays) {
 		var forPrev = document.getElementById('previous-fortunes-container');
 		
 		forPrev.appendChild(forList);
-		
-		arrays.splice(fortuneCurrent, 1);
 	
 	
 	// TODO: Update the Previous Fortunes list with the current `innerHTML`
