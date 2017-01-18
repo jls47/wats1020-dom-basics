@@ -39,7 +39,7 @@ var generateFortuneCookie = function() {
         // 2. Set the `innerHTML` of that element equal to the `innerHTML` of
         //    the `#fortune-cookie-text` element.
 	
-	forList.innerHTML.append(document.getElementById('fortune-cookie-text').innterHTML);
+	forList.innerHTML.append(document.getElementById('fortune-cookie-text').innerHTML);
 	
         // 3. Select the `#previous-fortunes-container` container and use
         //    `appendChild()` to append the new `li` element you created above.
