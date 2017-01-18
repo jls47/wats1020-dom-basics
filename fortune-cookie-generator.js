@@ -46,6 +46,7 @@ var generateFortuneCookie = function(fortunes) {
 			var forList = document.createElement('li');
 			forList.innerHTML = fortuneCurrent;
 			fortunePrev.appendChild(forList);
+			start += 1;
 		};
 		
 	
