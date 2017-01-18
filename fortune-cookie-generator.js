@@ -130,10 +130,10 @@ var generateFortuneCookie = function(fortunesList) {
 
     // `fortune-cookie-text` to be able to insert text into that element.
 
-	var fortuneNum = Math.floor((Math.random() * fortunesList.length) + 0);
-	var fortuneActual = fortunesList[fortuneNum];
-	var fortuneText = document.getElementById('fortune-cookie-text');
-	fortuneText.innerHTML = fortuneActual;
+	var fortuneNum = Math.floor(Math.random() * fortunesList.length);
+	var fortuneCurrent = fortunesList[fortuneNum];
+	document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
+	
 
     // TODO: Update the Previous Fortunes list with the current `innerHTML`
 
