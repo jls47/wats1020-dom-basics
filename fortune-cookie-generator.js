@@ -10,7 +10,7 @@
 
 var counter = 0;
 
-var generateFortuneCookie = function() {
+var generateFortuneCookie = function(arrays) {
 
     // This is where your code for the Fortune Cookie generator goes.
 
@@ -24,9 +24,9 @@ var generateFortuneCookie = function() {
 
     // `fortune-cookie-text` to be able to insert text into that element.
 
-		var fortuneNum = Math.floor(Math.random() * fortunesList.length);
+		var fortuneNum = Math.floor(Math.random() * arrays.length);
 		
-		var fortuneCurrent = fortunesList[fortuneNum];
+		var fortuneCurrent = arrays[fortuneNum];
 		
 		document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
 		
@@ -40,7 +40,7 @@ var generateFortuneCookie = function() {
 		
 		forPrev.appendChild(forList);
 		
-		fortunesList.splice(fortuneCurrent, 1);
+		arrays.splice(fortuneCurrent, 1);
 	
 	
 	// TODO: Update the Previous Fortunes list with the current `innerHTML`
