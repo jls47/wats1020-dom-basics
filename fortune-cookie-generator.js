@@ -10,7 +10,9 @@
 
 var counter = 0;
 
-var generateFortuneCookie = function(arrays) {
+var start = 0;
+
+var generateFortuneCookie = function(fortunes) {
 
     // This is where your code for the Fortune Cookie generator goes.
 
@@ -23,22 +25,29 @@ var generateFortuneCookie = function(arrays) {
     // TODO: Grab the paragraph with the ID
 
     // `fortune-cookie-text` to be able to insert text into that element.
-
-		var fortuneNum = Math.floor(Math.random() * arrays.length);
 		
-		var fortuneCurrent = arrays[fortuneNum];
+		var fortuneNum = Math.floor(Math.random() * fortunes.length);
 		
-		document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
+		var fortuneCurrent = fortunes[fortuneNum];
 		
-		counter += 1;  // pass number of fortunes produced
+		var fortunePrev = document.getElementById('previous-fortunes-container');
 		
-		var forList = document.createElement('li');
+		if(start >= 1){
+			for(var i = 0; i <= fortunePrev.length; i++){
+				if(fortunePrev === fortuneCurrent){
+					console.log(Repeat.  Returning to top.)
+					break;
+				}else{
+					document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
+					counter += 1;  // pass number of fortunes produced
+				};
+			}
+		}else{
+			var forList = document.createElement('li');
+			forList.innerHTML = fortuneCurrent;
+			fortunePrev.appendChild(forList);
+		};
 		
-		forList.innerHTML = fortuneCurrent;
-		
-		var forPrev = document.getElementById('previous-fortunes-container');
-		
-		forPrev.appendChild(forList);
 	
 	
 	// TODO: Update the Previous Fortunes list with the current `innerHTML`
