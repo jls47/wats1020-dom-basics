@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,19 +11,27 @@
         <script type="text/javascript" src="fortune-cookie-generator.js"></script>
     </head>
     <body>
+	<div class = "top">
         <h1>Fortune Cookie Generator</h1>
         <p>Use this page to generate fortune cookie sayings.</p>
         <div class="fortune-cookie-saying-wrapper">
             <p id="fortune-cookie-text">Click the button to generate a saying.</p>
         </div>
         <!-- TODO: Make this button execute the `generateFortuneCookie()` function. -->
-        <button class="generate-button" onclick = "generateFortuneCookie(fortunesList)" >
+        <button class="generate-button" onclick = "generateFortuneCookie(fortunesList)">
             Make My Fortune!
         </button>
+	</div>
         <hr>
+	<div class = "bottom">	
+		<div class = "counterbox">
+			<p>How many fortunes have you generated so far?</p>
+			<p id = "fortune-counter"> None yet! </p>
+		</div>
         <h2>Previous Fortunes</h2>
         <ul id="previous-fortunes-container">
         <!-- TODO: Modify javascript so previously generated fortunes are listed here. -->
         </ul>
+	</div>
     </body>
 </html>
