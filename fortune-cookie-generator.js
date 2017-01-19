@@ -10,7 +10,8 @@
 
 var counter = 0;
 
-var start = 0;
+
+
 
 var generateFortuneCookie = function(fortunes) {
 
@@ -20,33 +21,36 @@ var generateFortuneCookie = function(fortunes) {
 
     // to supply your fortune cookies with text.
 
-
-
     // TODO: Grab the paragraph with the ID
 
     // `fortune-cookie-text` to be able to insert text into that element.
+	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers");
+	if(simulFort > 0){
+		for(var i = 1; i <= simulFort; i++){
+			var fortuneNum = Math.floor(Math.random() * fortunes.length);
+			
+			var fortuneCurrent = fortunes[fortuneNum];
+			
+			var fortunePrev = document.getElementById('previous-fortunes-container');
 		
-		var fortuneNum = Math.floor(Math.random() * fortunes.length);
+			var forList = document.createElement('li');
+			
+			document.getElementById("fortune-cookie-text").style.backgroundImage = "url('fortunepaper.png')";
 		
-		var fortuneCurrent = fortunes[fortuneNum];
-		
-		var fortunePrev = document.getElementById('previous-fortunes-container');
-		
-		var forList = document.createElement('li');
-		
-		
-		if(fortunes.length > 0){
-			document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
-			forList.innerHTML = fortuneCurrent;
-			fortunePrev.appendChild(forList);
-			fortunesList.splice(fortuneNum, 1);
-		}else{
-			console.log("Done.")
-			forList.innerHTML = "Whoops, that's all the fortunes we have right now. Come back later for some more!";
-			fortunePrev.appendChild(forList);
-		}
-		
-		
+			if(fortunes.length > 0){
+				document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
+				forList.innerHTML = fortuneCurrent;
+				fortunePrev.appendChild(forList);
+				fortunesList.splice(fortuneNum, 1);
+				counter ++;
+				document.getElementById('fortune-counter').innerHTML = counter;
+			}else{
+				alert("Whoops, we've gone and run out of fortunes!  Try again later!");
+				break;
+			};
+		};
+	}else{cons
+	ole.log("No fortune returned.")};
 		
 	
 	
@@ -73,7 +77,7 @@ var generateFortuneCookie = function(fortunes) {
 
 
 
-}
+};
 
 
 
