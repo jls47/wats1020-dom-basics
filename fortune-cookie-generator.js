@@ -26,7 +26,7 @@ var generateFortuneCookie = function(fortunes) {
     // `fortune-cookie-text` to be able to insert text into that element.
 	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers");
 	if(simulFort > 0){
-		
+		for(var i = 1; i <= simulFort; i++){
 			var fortuneNum = Math.floor(Math.random() * fortunes.length);
 			
 			var fortuneCurrent = fortunes[fortuneNum];
@@ -38,35 +38,19 @@ var generateFortuneCookie = function(fortunes) {
 			document.getElementById("fortune-cookie-text").style.backgroundImage = "url('fortunepaper.png')";
 		
 			if(fortunes.length > 0){
-				if (simulFort > 1){
-					for(var i = 0; i <= simulFort; i++){
-						var fortuneNum = Math.floor(Math.random() * fortunes.length);
-			
-						var fortuneCurrent = fortunes[fortuneNum];
-			
-						var fortunePrev = document.getElementById('previous-fortunes-container');
-		
-						var forList = document.createElement('li');
-						
-						forList.append(fortuneCurrent);
-						
-						document.getElementById('fortune-cookie-text').innerHTML = forList;
-						
-					}
-				}else{	
-					document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
-					forList.innerHTML = fortuneCurrent;
-					fortunePrev.appendChild(forList);
-					fortunesList.splice(fortuneNum, 1);
-					counter ++;
-					document.getElementById('fortune-counter').innerHTML = counter;
-				};
+				document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
+				forList.innerHTML = fortuneCurrent;
+				fortunePrev.appendChild(forList);
+				fortunesList.splice(fortuneNum, 1);
+				counter ++;
+				document.getElementById('fortune-counter').innerHTML = counter;
 			}else{
 				alert("Whoops, we've gone and run out of fortunes!  Try again later!");
 				break;
 			};
 		};
-	}else{alert("No fortunes printed.")};
+	}else{cons
+	ole.log("No fortune returned.")};
 		
 	
 	
@@ -94,7 +78,6 @@ var generateFortuneCookie = function(fortunes) {
 
 
 };
-
 
 
 // The following data list is provided for you to use in your code.
