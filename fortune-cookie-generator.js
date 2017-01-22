@@ -25,17 +25,17 @@ var generateFortuneCookie = function(fortunesList) {
 
     // `fortune-cookie-text` to be able to insert text into that element.
 	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers (up to 7 for best results)");
-	document.getElementById('fortune-cookie-text').innerHTML = " ";}
+	document.getElementById('fortune-cookie-text').innerHTML = " ";
 	
 	var newFort = fortunesList;
 	
 	
 	if(simulFort > 0){
 		for(var i = 1; i <= simulFort; i++){
-			var fortuneNum = Math.floor(Math.random() * fortunes.length);
+			var fortuneNum = Math.floor(Math.random() * newFort.length);
 			
 			
-			var fortuneCurrent = fortunes[fortuneNum];
+			var fortuneCurrent = newFort[fortuneNum];
 			
 			var fortunePrev = document.getElementById('previous-fortunes-container');
 		
@@ -53,7 +53,7 @@ var generateFortuneCookie = function(fortunesList) {
 				document.getElementById('fortune-counter').innerHTML = counter;
 			}else{
 				alert("Whoops, we've gone and run out of fortunes!  Starting from the top...");
-				newFort = fortunesList;
+				newFort.push(fortunesList);
 				
 			};
 		};
