@@ -85,6 +85,7 @@ var generateFortuneCookie = function(fortunesList) {
 					//console.dir(fortunesList);
 					//reset the newFort array
 					newFort = [];
+					continue;
 				}else{
 					//or page refresh
 					location.reload();
