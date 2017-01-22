@@ -10,8 +10,9 @@
 
 var counter = 0;
 
+var newFort = [];
 
-
+var prevFort = [];
 
 var generateFortuneCookie = function(fortunesList) {
 
@@ -27,38 +28,56 @@ var generateFortuneCookie = function(fortunesList) {
 	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers (up to 7 for best results)");
 	document.getElementById('fortune-cookie-text').innerHTML = " ";
 	
-	var newFort = fortunesList;
-	
+	fortuneLength = fortunesList.length;
 	
 	if(simulFort > 0){
+	
 		for(var i = 1; i <= simulFort; i++){
-			var fortuneNum = Math.floor(Math.random() * newFort.length);
+			var fortuneNum = Math.floor(Math.random() * fortunesList.length);
 			
+			var fortuneCurrent = fortunesList[fortuneNum];
 			
-			var fortuneCurrent = newFort[fortuneNum];
+			newFort.push(fortuneCurrent);
+			
+			//console.log("newFort length: " + newFort.length)
 			
 			var fortunePrev = document.getElementById('previous-fortunes-container');
-		
-			var forList = document.createElement('li');
 			
 			document.getElementById("fortune-cookie-text").style.backgroundImage = "url('fortunepaper.png')";
+			
+			var forList = document.createElement('li');
+			
+			forList.innerHTML += fortuneCurrent;
+			
+			counter ++;
 		
-			if(newFort.length > 0){
+			if(counter % fortuneLength != 0){
 				document.getElementById('fortune-cookie-text').innerHTML += fortuneCurrent;
 				document.getElementById('fortune-cookie-text').innerHTML += "<br>";
-				forList.innerHTML += fortuneCurrent;
 				fortunePrev.appendChild(forList);
-				newFort.splice(fortuneNum, 1);
-				counter ++;
-				document.getElementById('fortune-counter').innerHTML = counter;
-			}else{
-				alert("Whoops, we've gone and run out of fortunes!  Starting from the top...");
-				newFort.push(fortunesList);
+				//newFort.push(fortuneCurrent);
+				fortunesList.splice(fortuneNum, 1);
 				
+				document.getElementById('fortune-counter').innerHTML = (counter);
+			}else{
+				var yn = prompt("We've run through all the fortunes!  Keep going?", "y/n");
+				if(yn === 'y'){
+					for(i = 0; i <= newFort.length; i++){
+						fortunesList.push(newFort[i]);
+						
+					}
+					console.log("fortuneslist length: " + fortunesList.length);
+					console.dir(fortunesList);
+					newFort = [];
+				}else{
+					location.reload();
+				}
 			};
 		};
 	};
 		
+	
+	
 	
 	
 	// TODO: Update the Previous Fortunes list with the current `innerHTML`
