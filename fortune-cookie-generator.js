@@ -13,7 +13,7 @@ var counter = 0;
 
 
 
-var generateFortuneCookie = function(fortunes) {
+var generateFortuneCookie = function(fortunesList) {
 
     // This is where your code for the Fortune Cookie generator goes.
 
@@ -24,10 +24,16 @@ var generateFortuneCookie = function(fortunes) {
     // TODO: Grab the paragraph with the ID
 
     // `fortune-cookie-text` to be able to insert text into that element.
-	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers");
+	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers (up to 7 for best results)");
+	document.getElementById('fortune-cookie-text').innerHTML = " ";}
+	
+	var newFort = fortunesList;
+	
+	
 	if(simulFort > 0){
 		for(var i = 1; i <= simulFort; i++){
 			var fortuneNum = Math.floor(Math.random() * fortunes.length);
+			
 			
 			var fortuneCurrent = fortunes[fortuneNum];
 			
@@ -37,20 +43,21 @@ var generateFortuneCookie = function(fortunes) {
 			
 			document.getElementById("fortune-cookie-text").style.backgroundImage = "url('fortunepaper.png')";
 		
-			if(fortunes.length > 0){
-				document.getElementById('fortune-cookie-text').innerHTML = fortuneCurrent;
-				forList.innerHTML = fortuneCurrent;
+			if(newFort.length > 0){
+				document.getElementById('fortune-cookie-text').innerHTML += fortuneCurrent;
+				document.getElementById('fortune-cookie-text').innerHTML += "<br>";
+				forList.innerHTML += fortuneCurrent;
 				fortunePrev.appendChild(forList);
-				fortunesList.splice(fortuneNum, 1);
+				newFort.splice(fortuneNum, 1);
 				counter ++;
 				document.getElementById('fortune-counter').innerHTML = counter;
 			}else{
-				alert("Whoops, we've gone and run out of fortunes!  Try again later!");
-				break;
+				alert("Whoops, we've gone and run out of fortunes!  Starting from the top...");
+				newFort = fortunesList;
+				
 			};
 		};
-	}else{cons
-	ole.log("No fortune returned.")};
+	};
 		
 	
 	
