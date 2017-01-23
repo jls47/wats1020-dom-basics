@@ -12,6 +12,8 @@ var counter = 0;
 
 var newFort = [];
 
+var fortList = [];
+
 //I will need to remove redundant and null entries from the list eventually so I will establish this now
 var removeRedundancies = function(fortunesList){
 	//take every entry in the array
@@ -38,21 +40,24 @@ var generateFortuneCookie = function(fortunesList) {
 
     // `fortune-cookie-text` to be able to insert text into that element.
 	
+	//Here I start by setting a variable equal to fortunesList.length
+	fortuneLength = fortunesList.length;
 	//Here I start by asking the users how many fortunes they would like to generate.
-	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers (Redundancy possible)");
+	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers (Redundancy will occur over " + fortuneLength + ")");
 	//and here I erase whatever previous fortunes are still in the fortune-cookie-text so that the new ones can avoid cluttering the page.
 	document.getElementById('fortune-cookie-text').innerHTML = " ";
-	
-	//trying to set a static fortune list length from fortuneslist.  Should stay at 51.
-	fortuneLength = fortunesList.length;
 	
 	//adding to the fortune counter
 	counter += parseInt(simulFort);
 	
 	//if user inputs more than 0:
 	if(simulFort > 0){
-		//alerts users if they exceed the number of fortunes and recommends a number to go below
-		if(simulFort > fortuneLength){alert("Try a smaller number next time to avoid redundancies!  Try using less than " + fortuneLength + ".");};
+		//alerts users if they exceed the number of fortunes left and recommends a number to go below, passes out of the function so that stuff does not get borked
+		if(simulFort > fortuneLength){
+			alert("Try a smaller number next time!  There were only " + fortuneLength + " entries left in the list of fortunes.");
+			counter = 0;
+			return;
+		};
 		//From 1 to the user input:
 		for(var i = 1; i <= simulFort; i++){
 			//selecting random fortune based on random index
@@ -104,9 +109,15 @@ var generateFortuneCookie = function(fortunesList) {
 					removeRedundancies(fortunesList);
 					continue;
 				}else{
-					//or page refresh and start from scratch
-					location.reload();
-				}
+					//Leave the fortunes up for posterity?
+					var ny = prompt("Would you like to (1) leave this as it is or (2) start from scratch?")
+					if(parseInt(ny) == 1){
+						break;
+					}else{
+						//or burn them all and start anew?
+						location.reload();
+					};
+				};
 			};
 		};
 	};
@@ -115,26 +126,7 @@ var generateFortuneCookie = function(fortunesList) {
 	
 	
 	
-	// TODO: Update the Previous Fortunes list with the current `innerHTML`
 
-    // value of `#fortune-cookie-text`. Follow these steps:
-	
-        // 1. Create a new `li` element with the `document.createElement()` method.
-        // 2. Set the `innerHTML` of that element equal to the `innerHTML` of
-        //    the `#fortune-cookie-text` element.
-        // 3. Select the `#previous-fortunes-container` container and use
-        //    `appendChild()` to append the new `li` element you created above.
-        // 4. You should see the previous fortune cookie saying show up in the list.
-	
-	
-
-    // TODO: Select a new (random) fortune cookie saying from the data stored in the
-
-    // `fortunesList` variable. (HINT: You will use `Math.floor()` and
-
-    // `Math.random()` to accomplish this.) Use this data to update the
-
-    // `innerText` of the `#fortune-cookie-text` element.
 
 
 
