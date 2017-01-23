@@ -12,8 +12,6 @@ var counter = 0;
 
 var newFort = [];
 
-var prevFort = [];
-
 //I will need to remove redundant and null entries from the list eventually so I will establish this now
 var removeRedundancies = function(fortunesList){
 	//take every entry in the array
@@ -27,7 +25,6 @@ var removeRedundancies = function(fortunesList){
 		};
 	};
 };
-
 
 var generateFortuneCookie = function(fortunesList) {
 
