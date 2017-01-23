@@ -50,7 +50,9 @@ var generateFortuneCookie = function(fortunesList) {
 	counter += parseInt(simulFort);
 	
 	//if user inputs more than 0:
-	if(simulFort > 0 && simulFort < fortuneLength){
+	if(simulFort > 0){
+		//alerts users if they exceed the number of fortunes
+		if(simulFort > fortuneLength){alert("Try a smaller number next time to avoid redundancies!  Try using less than " + fortuneLength + ".");};
 		//From 1 to the user input:
 		for(var i = 1; i <= simulFort; i++){
 			//selecting random fortune based on random index
@@ -107,9 +109,6 @@ var generateFortuneCookie = function(fortunesList) {
 				}
 			};
 		};
-	//if the user goes above the amount of fortunes they will be asked to provide smaller input to avoid giving out the same fortunes twice
-	}else if(simulFort > fortuneLength){
-		alert("To avoid redundancies in your fortunes, it would be wise to choose a smaller number.");
 	};
 };
 	
