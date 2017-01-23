@@ -14,6 +14,21 @@ var newFort = [];
 
 var prevFort = [];
 
+//I will need to remove redundant and null entries from the list eventually so I will establish this now
+var removeRedundancies = function(fortunesList){
+	//take every entry in the array
+	for(var i = 0; i <= fortunesList.length; i++){
+		//compare it against every other entry in the array
+		for(var j = 0; j <= fortunesList.length; j++){
+			//if any two entries are the same, then splice the last one out
+			if(j != i && fortunesList[i] === fortunesList[j]){
+				fortunesList.splice(j, 1);
+			};
+		};
+	};
+};
+
+
 var generateFortuneCookie = function(fortunesList) {
 
     // This is where your code for the Fortune Cookie generator goes.
@@ -25,15 +40,19 @@ var generateFortuneCookie = function(fortunesList) {
     // TODO: Grab the paragraph with the ID
 
     // `fortune-cookie-text` to be able to insert text into that element.
-	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers (up to 7 for best results)");
+	
+	//Here I start by asking the users how many fortunes they would like to generate.
+	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers (though if you go over the amount of fortunes in the list you will have redundancy");
+	//and here I erase whatever previous fortunes are still in the fortune-cookie-text so that the new ones can avoid cluttering the page.
 	document.getElementById('fortune-cookie-text').innerHTML = " ";
 	
+	//trying to set a static fortune list length from fortuneslist.  Should stay at 51.
 	fortuneLength = fortunesList.length;
 	
-	//trying to set a static fortune list length from fortuneslist.  Should stay at 51.
+	//adding to the fortune counter
+	counter += parseInt(simulFort);
 	
-	//if user pushes more than 0:
-	
+	//if user inputs more than 0:
 	if(simulFort > 0){
 		//From 1 to the user input:
 		for(var i = 1; i <= simulFort; i++){
@@ -48,17 +67,15 @@ var generateFortuneCookie = function(fortunesList) {
 			
 			//establishing the previous fortune container
 			var fortunePrev = document.getElementById('previous-fortunes-container');
-			
+			//Establishing the background image.  Repeats if enough fortunes are generated.
 			document.getElementById("fortune-cookie-text").style.backgroundImage = "url('fortunepaper.png')";
-			
 			//creating list elements using the current fortunes that will be appended to the previous fortunes element
 			var forList = document.createElement('li');
 			//adding list elements
 			forList.innerHTML += fortuneCurrent;
 			//adding to the fortune counter
-			counter ++;
 			//if the counter hasn't ticked up to the length of the fortune array...
-			if(counter % (fortuneLength) != 0){
+			if(newFort.length % (fortuneLength) != 0){
 				//add current fortune to the fortune cookie text along with a line break
 				document.getElementById('fortune-cookie-text').innerHTML += fortuneCurrent;
 				document.getElementById('fortune-cookie-text').innerHTML += "<br>";
@@ -75,25 +92,26 @@ var generateFortuneCookie = function(fortunesList) {
 				var yn = prompt("We've run through all the fortunes!  Keep going?", "y/n");
 				//if they say yes
 				if(yn === 'y'){
-					//return all entries to fortunesList
+					//return all entries to fortunesList to repopulate the array and start anew
 					for(i = 0; i <= newFort.length; i++){
 						fortunesList.push(newFort[i]);
 						
 					}
-					//
-					console.log("fortuneslist length: " + fortunesList.length);
+					//bugchecking.
+					//console.log("fortuneslist length: " + fortunesList.length);
 					//console.dir(fortunesList);
 					//reset the newFort array
 					newFort = [];
+					removeRedundancies(fortunesList);
 					continue;
 				}else{
-					//or page refresh
+					//or page refresh and start from scratch
 					location.reload();
 				}
 			};
 		};
 	};
-		
+};
 	
 	
 	
@@ -121,7 +139,7 @@ var generateFortuneCookie = function(fortunesList) {
 
 
 
-};
+
 
 
 // The following data list is provided for you to use in your code.
