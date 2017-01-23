@@ -104,7 +104,7 @@ var generateFortuneCookie = function(fortunesList) {
 				//add the final fortune like normal
 				document.getElementById('fortune-cookie-text').innerHTML += fortuneCurrent;
 				fortunePrev.appendChild(forList);
-				counter++;
+				//counter++;
 				
 				//ask user if they want to keep going
 				var yn = prompt("We've run through all the fortunes!  Keep going?", "y/n");
