@@ -42,7 +42,7 @@ var generateFortuneCookie = function(fortunesList) {
     // `fortune-cookie-text` to be able to insert text into that element.
 	
 	//Here I start by asking the users how many fortunes they would like to generate.
-	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers (though if you go over the amount of fortunes in the list you will have redundancy");
+	var simulFort = prompt("How many fortunes at a time would you like to generate?", "Accepts integers (Redundancy possible)");
 	//and here I erase whatever previous fortunes are still in the fortune-cookie-text so that the new ones can avoid cluttering the page.
 	document.getElementById('fortune-cookie-text').innerHTML = " ";
 	
@@ -53,7 +53,7 @@ var generateFortuneCookie = function(fortunesList) {
 	counter += parseInt(simulFort);
 	
 	//if user inputs more than 0:
-	if(simulFort > 0){
+	if(simulFort > 0 && simulFort < fortuneLength){
 		//From 1 to the user input:
 		for(var i = 1; i <= simulFort; i++){
 			//selecting random fortune based on random index
@@ -110,6 +110,9 @@ var generateFortuneCookie = function(fortunesList) {
 				}
 			};
 		};
+	//if the user goes above the amount of fortunes they will be asked to provide smaller input to avoid giving out the same fortunes twice
+	}else if(simulFort > fortuneLength){
+		alert("To avoid redundancies in your fortunes, it would be wise to choose a smaller number.");
 	};
 };
 	
