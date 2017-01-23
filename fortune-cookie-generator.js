@@ -51,7 +51,7 @@ var generateFortuneCookie = function(fortunesList) {
 	
 	//if user inputs more than 0:
 	if(simulFort > 0){
-		//alerts users if they exceed the number of fortunes
+		//alerts users if they exceed the number of fortunes and recommends a number to go below
 		if(simulFort > fortuneLength){alert("Try a smaller number next time to avoid redundancies!  Try using less than " + fortuneLength + ".");};
 		//From 1 to the user input:
 		for(var i = 1; i <= simulFort; i++){
