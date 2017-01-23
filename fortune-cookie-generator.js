@@ -60,10 +60,11 @@ var generateFortuneCookie = function(fortunesList) {
 		};
 		//From 1 to the user input:
 		for(var i = 1; i <= simulFort; i++){
+			
 			//selecting random fortune based on random index
 			var fortuneNum = Math.floor(Math.random() * fortunesList.length);
-			
 			var fortuneCurrent = fortunesList[fortuneNum];
+			
 			//pushing the new fortune to the empty array to use later
 			newFort.push(fortuneCurrent);
 			
@@ -71,43 +72,63 @@ var generateFortuneCookie = function(fortunesList) {
 			
 			//establishing the previous fortune container
 			var fortunePrev = document.getElementById('previous-fortunes-container');
+			
 			//Establishing the background image.  Repeats if enough fortunes are generated.
 			document.getElementById("fortune-cookie-text").style.backgroundImage = "url('fortunepaper.png')";
+			
 			//creating list elements using the current fortunes that will be appended to the previous fortunes element
 			var forList = document.createElement('li');
+			
 			//adding list elements
 			forList.innerHTML += fortuneCurrent;
-			//adding to the fortune counter
+			
 			//if the counter hasn't ticked up to the length of the fortune array...
 			if(newFort.length % (fortuneLength) != 0){
+				
 				//add current fortune to the fortune cookie text along with a line break
 				document.getElementById('fortune-cookie-text').innerHTML += fortuneCurrent;
 				document.getElementById('fortune-cookie-text').innerHTML += "<br>";
+				
 				//push the list elements to the previous fortune container
 				fortunePrev.appendChild(forList);
-				//newFort.push(fortuneCurrent);
+				
 				//get rid of the current fortune from the fortunes list
 				fortunesList.splice(fortuneNum, 1);
+				
 				//add the counter to the page
 				document.getElementById('fortune-counter').innerHTML = (counter);
+				
 			//...but if it has
 			}else{
+				
+				//add the final fortune like normal
+				document.getElementById('fortune-cookie-text').innerHTML += fortuneCurrent;
+				fortunePrev.appendChild(forList);
+				counter++;
+				
 				//ask user if they want to keep going
 				var yn = prompt("We've run through all the fortunes!  Keep going?", "y/n");
+				
 				//if they say yes
 				if(yn === 'y'){
+					
 					//return all entries to fortunesList to repopulate the array and start anew
 					for(i = 0; i <= newFort.length; i++){
 						fortunesList.push(newFort[i]);
 						
 					}
+					
 					//bugchecking.
 					//console.log("fortuneslist length: " + fortunesList.length);
 					//console.dir(fortunesList);
+					
 					//reset the newFort array
 					newFort = [];
+					//remove possible redundancies
 					removeRedundancies(fortunesList);
+					//return to the top of the function
 					continue;
+				//or if they say anything else
 				}else{
 					//Leave the fortunes up for posterity?
 					var ny = prompt("Would you like to (1) leave this as it is or (2) start from scratch?")
